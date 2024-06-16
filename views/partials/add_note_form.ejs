@@ -1,0 +1,14 @@
+<div class="form hidden">
+    <span class="close" id="closeBtn">✖</span>
+    <h3 class="nanum-gothic-bold">Add a Note for <%= book.title %></h3>
+    <form action="/addnote" method="post">
+        <div class="field">
+            <input type="text" name="title" autocomplete="off" placeholder="Title">
+        </div>
+        <div class="field">
+            <input type="text" name="note" autocomplete="off" placeholder="Note">
+        </div>
+        <input type="hidden" name="book_id" value="<%= book.id %>">
+        <button>Submit</button>
+    </form>
+</div>

@@ -1,0 +1,9 @@
+. Design & Layout approach: https://ankitojha08.github.io/notes/
+. Fonts:
+    Title of website: Nanum Myeongjo
+    Title of notes: Nanum Gothic Bold
+    Regular Text: Nanum Gothic
+
+TODO:
+
+Work on the routes 

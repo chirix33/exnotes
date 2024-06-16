@@ -1,0 +1,109 @@
+<%- include('partials/head.ejs', {title: 'Exnotes: View Book'}) %>
+<body>
+    <div class="container">
+        <nav class="align-c">
+            <% 
+            let bookName = 'Exnotes'; 
+            if (locals.book) {
+                bookName = locals.book[0].title;
+            } 
+            %>
+            <h2 class="nanum-myeongjo-bold"><%= bookName %></h2>
+            <a href="/">Home</a>
+        </nav>
+        <%- include('partials/add_note_form.ejs', {book: locals.book[0]}) %>
+        <div class="content m-auto">
+            <% if (locals.error) { %>
+                <h4>The book wasn't found. Please <a href="/">go back</a></h4>
+            <% } else { %>
+                <div class="m-auto">
+                    <p id="rating" class="nanum-myeongjo-regular lead" style="display: inline-block;">
+                        Rating: 
+                        <form class="rating" action="" method="post">
+                            <input type="hidden" id="bookID" value="<%= locals.book[0].id %>">
+                            <%
+                            let rating = locals.book[0].rating;
+                            for (let i = 0; i < 5; i++) {
+                                if (i < rating) { %>
+                                    <button name="rating" value="<%= i+1 %>" class="rating-star colored">★</button>
+                            <% } else { %>
+                                    <button name="rating" value="<%= i+1 %>" class="rating-star">★</button>
+                            <%  }
+                            } %>
+                        </form>
+                        <span id="ratingUpdate"></span>
+                    </p>
+                    <button id="addNoteBtn" class="manage-form">✚ Add a note</button>
+                    <p class="nanum-myeongjo-regular lead">Notes</p>
+                </div>
+                <div class="book-list">
+                    <% if (notes.length > 0) { %>
+                        <% notes.forEach(note => { %>
+                            <div class="note nanum-myeongjo-regular">
+                                <span class="quote">❝ <%= note.note_title %></span>
+                                <br>
+                                <p class="note-text"><%= note.note_text %></p>
+                                <br>
+                                <span>❞ - <%= new Date(note.created_at).toLocaleDateString('en-US', 
+                                    { year: 'numeric', month: 'short', day: 'numeric' }) %></span>
+                            </div>
+                        <% }) %>
+                    <% } else { %>
+                        <h3 class="nanum-myeongjo-regular">Add your first note using the button above 👆</h3>
+                    <% } %>
+                </div>
+            <% } %>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script>
+        let noteForm = document.getElementsByClassName("form")[0];
+        let addNoteBtn = document.getElementById("addNoteBtn");
+        let closeBtn = document.getElementById("closeBtn");
+
+        addNoteBtn.addEventListener("click", () => {
+            noteForm.classList.remove("hidden");
+        });
+        
+        closeBtn.addEventListener("click", () => {
+            noteForm.classList.add("hidden");
+        });
+
+        $(document).ready(function() {
+            $(".rating-star").on("mouseover", function(e) {
+                $(this).prevAll().addBack().addClass("hovered");
+            });
+
+            $(".rating-star").on("mouseout", function(e) {
+                $(this).prevAll().addBack().removeClass("hovered");
+            });
+
+            // Ajax to manage the rating of the book once clicked
+            $(".rating-star").on("click", function(e) {
+                e.preventDefault();
+                let rating = $(this).val();
+                let bookId = $("#bookID").val();
+                $.ajax({
+                    type: "POST",
+                    url: "/books/rate",
+                    data: { rating: rating, bookID: bookId },
+                    success: function(data) {
+                        let ratingP = $("#ratingUpdate");
+                        if (data == "success") {
+                            ratingP.html("<span class='success'>Rating updated</span>"); 
+
+                            setTimeout(function () {
+                                location.reload(true);
+                            }, 2000);
+                            
+                        } else {
+                            ratingP.html("<span class='error'>Could not update. Try again</span>"); 
+                        }
+                        console.log(data);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

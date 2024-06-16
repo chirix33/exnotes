@@ -1,0 +1,300 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    font-size: 16px;
+}
+
+body {
+    background-color: #E6EBE0;
+    box-sizing: border-box;
+}
+
+.nanum-gothic-regular {
+    font-family: "Nanum Gothic", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+  
+.nanum-gothic-bold {
+    font-family: "Nanum Gothic", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+  
+.nanum-myeongjo-regular {
+    font-family: "Nanum Myeongjo", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+  
+.nanum-myeongjo-bold {
+    font-family: "Nanum Myeongjo", serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.container {
+    background-color: inherit;
+    min-height: 100vh;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 5% 18%;
+    vertical-align: middle;
+    position: relative;
+}
+
+.align-c {
+    align-items: center;
+}
+
+h2 {
+    font-size: 3rem;
+}
+
+.m-auto {
+    margin: auto;
+}
+
+.content {
+    width: 75%;
+}
+
+.lead {
+    font-size: 18px; 
+    padding-bottom: 20px;  
+}
+
+.search-container {
+    height: 100%;
+}
+
+input.search-book {
+    border: none;
+    outline: none;
+    padding: 0 10px;
+    font-size: 1.2rem;
+}
+
+#searchResults {
+    margin: auto;
+    width: 100%;
+    padding: 40px 0;
+    display: none;
+    max-height: 200px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#searchResults button {
+    line-height: 30px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    border: 1px solid rgb(104, 99, 99);
+    outline: none;
+    display: block;
+    width: 95%;
+    text-align: left;
+    padding: 16px 10px;
+}
+
+#searchResults button:hover {
+    background-color: #dddddd;
+}
+
+.search-title {
+    text-transform: uppercase;
+}
+
+.book-list {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 4%;
+    row-gap: 30px;
+    margin: 50px 0;
+}
+
+.book-list > .note {
+    background-color: #F9F9F9;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border-radius: 8px;
+    position: relative;
+    max-width: 200px;
+    min-width: 200px;
+    min-height: 250px;
+    transition: .1s;
+}
+
+.note span {
+    display: block;
+    text-align: right;
+}
+
+.note span.quote {
+    text-align: left;
+    font-size: 20px;
+}
+
+.note .note-text {
+    min-height: 60px;
+}
+
+
+.book-list > .book {
+    background-color: #F9F9F9;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border-radius: 8px;
+    position: relative;
+    max-width: 200px;
+    min-width: 200px;
+    min-height: 250px;
+    transition: .1s;
+}
+
+.book:hover {
+    box-shadow: 0 0 10px rgba(255, 255, 0, 0.5);
+    /* transform: scale(1.05); */
+}
+
+.book p {
+    line-height: 25px;
+}
+
+.book a {
+    display: block;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    background-color: rgba(97, 97, 10, 0.5);
+    border-radius: inherit;
+    margin-top: 10px;
+    color: black;
+    padding: 1rem 0;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.no-books {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 50px;
+    min-height: 200px;
+    line-height: 30px;
+}
+
+button#addNoteBtn {
+    background-color: #F9F9F9;
+    font-family: "Nanum Gothic", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    padding: 12px 17px;
+    outline: none;
+    border: 1px solid rgba(255, 255, 0, 0.5);
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: .2s;
+}
+
+button#addNoteBtn:hover {
+    background-color: #FFDE59;
+    color: rgb(104, 99, 99);
+}
+
+.form {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(82, 82, 82, 0.9);
+    color: white;
+    z-index: 2;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.form form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 70%;
+}
+
+.form .close {
+    position: absolute;
+    top: 15%;
+    right: 18%;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.form input {
+    width: 100%;
+    height: 30px;
+    font-size: 16px;
+    padding: 15px 0px;
+    font-family: "Nanum Gothic", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.form button {
+    font-family: "Nanum Gothic", sans-serif;
+    font-size: 16px;
+    width: 100%;
+    padding: 15px 0;
+    margin: auto;
+}
+
+.rating-star {
+    font-size: 27px;
+    cursor: pointer;
+    transition: .2s;
+    margin-left: 2px;
+    outline: none;
+    background-color: transparent;
+    border: none;
+    display: inline;
+}
+
+.rating-star.colored {
+    color:#FFDE59;   
+}
+
+.hovered {
+    color: #ecd471 !important; 
+}
+
+form.rating {
+    display: inline;
+}
+
+.success {
+    color: rgb(14, 77, 14);
+}
+
+.error {
+    color: #dc3545;
+}
