@@ -46,10 +46,12 @@ body {
 
 nav {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     padding: 5% 18%;
     vertical-align: middle;
     position: relative;
+    gap: 10px;
 }
 
 .align-c {
@@ -297,4 +299,29 @@ form.rating {
 
 .error {
     color: #dc3545;
+}
+
+.home-button {
+    font-size: 16px;
+    background-color: rgb(209, 206, 206);
+    text-decoration: none;
+    color: black;
+    padding: 10px 15px;
+    border-radius: 8px;
+}
+
+@media screen and (max-width: 768px) {
+    nav {
+        padding: 5% 0;
+        width: 75%;
+        margin: auto;
+    }
+
+    nav > h2 {
+        text-align: center;
+    }
+
+    input.search-book {
+        padding: 15px 10px;
+    }
 }
