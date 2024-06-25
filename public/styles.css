@@ -125,6 +125,7 @@ input.search-book {
 }
 
 .book-list > .note {
+    position: relative;
     background-color: #F9F9F9;
     display: flex;
     flex-direction: column;
@@ -310,11 +311,36 @@ form.rating {
     border-radius: 8px;
 }
 
+.delete-note {
+    font-size: 14px;
+    background-color: #dc3545;
+    color: white;
+    outline: none;
+    border: none;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    display: block;
+    width: 100%;
+    border-radius: 15px;
+    cursor: pointer;
+    padding: 8px 0;
+    transition: .2s;
+}
+
+.delete-note:hover {
+    background-color: transparent;
+    color: #dc3545;
+    border: 1px solid #dc3545;
+}
+
+
 @media screen and (max-width: 768px) {
     nav {
         padding: 5% 0;
         width: 75%;
         margin: auto;
+        justify-content: center;
     }
 
     nav > h2 {
@@ -323,5 +349,9 @@ form.rating {
 
     input.search-book {
         padding: 15px 10px;
+    }
+
+    .book-list {
+        justify-content: center;
     }
 }

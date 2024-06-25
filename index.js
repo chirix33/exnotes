@@ -106,6 +106,22 @@ app.post("/books/rate", async (req, res) => {
     }
 });
 
+app.post("/delete-note", async (req, res) => {
+    const noteID = parseInt(req.body.noteID);
+    const bookID = parseInt(req.body.bookID);
+
+    // Delete the book
+    try {
+        const query = "DELETE FROM notes WHERE id = $1";
+        const values = [noteID];
+        await db.query(query, values);
+    } catch (error) {
+        console.log(`Error deleting the note: ${error}`);
+    }
+
+    res.redirect(`/book/${bookID}`);
+});
+
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });

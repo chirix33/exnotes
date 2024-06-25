@@ -45,7 +45,13 @@
                                 <p class="note-text"><%= note.note_text %></p>
                                 <br>
                                 <span>❞ - <%= new Date(note.created_at).toLocaleDateString('en-US', 
-                                    { year: 'numeric', month: 'short', day: 'numeric' }) %></span>
+                                    { year: 'numeric', month: 'short', day: 'numeric' }) %>
+                                </span>
+                                <form action="/delete-note" method="post">
+                                    <input type="hidden" name="bookID" value="<%= note.book_id %>">
+                                    <input type="hidden" name="noteID" value="<%= note.id %>">
+                                    <button class="delete-note">✕ Delete</button>
+                                </form>
                             </div>
                         <% }) %>
                     <% } else { %>
