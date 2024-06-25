@@ -6,10 +6,10 @@ dotenv.config();
 const app = express();
 const port = 3000;
 const db = new pg.Client({
-    host: process.env.HOST,
-    database: process.env.DB,
-    user: process.env.USER,
-    password: process.env.PASS,
+    host: process.env.REMOTE_HOST,
+    database: process.env.REMOTE_DB,
+    user: process.env.REMOTE_USER,
+    password: process.env.REMOTE_PASS,
     port: process.env.PORT
 });
 db.connect();
