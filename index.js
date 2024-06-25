@@ -10,7 +10,11 @@ const db = new pg.Client({
     database: process.env.REMOTE_DB,
     user: process.env.REMOTE_USER,
     password: process.env.REMOTE_PASS,
-    port: process.env.PORT
+    port: process.env.PORT,
+    ssl: {
+        rejectUnauthorized: false,
+        mode: true
+    }
 });
 db.connect();
 
