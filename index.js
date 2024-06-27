@@ -5,7 +5,7 @@ import dotenv from "dotenv";
 dotenv.config();
 const app = express();
 const port = 3000;
-const db = new pg.Client("postgresql://chirix:Nc4Xo1raEM4UFYFiY3sqRDMjMnTLNQRs@dpg-cps74bo8fa8c7392pnv0-a/exnotes?ssl=true");
+const db = new pg.Client("postgresql://chirix:Nc4Xo1raEM4UFYFiY3sqRDMjMnTLNQRs@dpg-cps74bo8fa8c7392pnv0-a/exnotes");
 db.connect();
 
 // Middlewares
